@@ -1,0 +1,13 @@
+package com.ecommerce.order_service.service;
+
+import com.ecommerce.order_service.event.OrderPlacedEvent;
+import com.ecommerce.order_service.model.OutboxEvent;
+import java.util.List;
+
+public interface OutboxEventService {
+  void saveOrderPlacedEvent(OrderPlacedEvent event, boolean isProcessed);
+
+  List<OutboxEvent> getPendingEvents();
+
+  void markAsProcessed(Long id);
+}
