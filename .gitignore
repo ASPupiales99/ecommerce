@@ -6,5 +6,5 @@ discovery-server/
 *.env.*
 !.env.example
 !.env.*.example
+!K8s/secrets.env.example
 K8s/secrets.yaml
-K8s/secrets.env
