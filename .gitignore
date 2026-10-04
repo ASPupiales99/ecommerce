@@ -2,3 +2,9 @@
 config-server/*
 config-data/
 discovery-server/
+*.env
+*.env.*
+!.env.example
+!.env.*.example
+K8s/secrets.yaml
+K8s/secrets.env

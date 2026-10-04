@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: inventory-service
-          image: inventory-service:latest
+          image: inventory-service:1.0.0
           imagePullPolicy: Never
           ports:
             - containerPort: 8083
@@ -42,7 +42,10 @@ spec:
             - name: SPRING_DATASOURCE_USERNAME
               value: "CHANGE_ME"
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MYSQL_ROOT_PASSWORD
             - name: SPRING_RABBITMQ_HOST
               value: "rabbitmq"
             - name: SPRING_JPA_HIBERNATE_DDL_AUTO

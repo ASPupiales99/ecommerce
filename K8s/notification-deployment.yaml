@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: notification-service:latest
+          image: notification-service:1.0.0
           imagePullPolicy: Never
           ports:
             - containerPort: 8084
@@ -34,9 +34,15 @@ spec:
             - name: SPRING_MAIL_PORT
               value: "2525"
             - name: SPRING_MAIL_USERNAME
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MAIL_USERNAME
             - name: SPRING_MAIL_PASSWORD
-              value: "CHANGE_MEa"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MAIL_PASSWORD
 ---
 apiVersion: v1
 kind: Service

@@ -19,9 +19,15 @@ spec:
             - containerPort: 27017
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MONGO_ROOT_USERNAME
             - name: MONGO_INITDB_ROOT_PASSWORD
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MONGO_ROOT_PASSWORD
           volumeMounts:
             - name: mongo-storage
               mountPath: /data/db
@@ -62,7 +68,10 @@ spec:
             - containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
               value: "inventory-db"
           volumeMounts:
@@ -105,9 +114,15 @@ spec:
             - containerPort: 5432
           env:
             - name: POSTGRES_USER
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: POSTGRES_ORDER_USERNAME
             - name: POSTGRES_PASSWORD
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: POSTGRES_ORDER_PASSWORD
             - name: POSTGRES_DB
               value: "order-db"
           volumeMounts:
@@ -150,9 +165,15 @@ spec:
             - containerPort: 5432
           env:
             - name: POSTGRES_USER
-              value: "keycloak"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: POSTGRES_KEYCLOAK_USERNAME
             - name: POSTGRES_PASSWORD
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: POSTGRES_KEYCLOAK_PASSWORD
             - name: POSTGRES_DB
               value: "keycloak-db"
           volumeMounts:
