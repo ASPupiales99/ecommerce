@@ -40,12 +40,15 @@ spec:
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:mysql://inventory-db:3306/inventory-db"
             - name: SPRING_DATASOURCE_USERNAME
-              value: "CHANGE_ME"
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MYSQL_APP_USERNAME
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: ecommerce-secrets
-                  key: MYSQL_ROOT_PASSWORD
+                  key: MYSQL_APP_PASSWORD
             - name: SPRING_RABBITMQ_HOST
               value: "rabbitmq"
             - name: SPRING_JPA_HIBERNATE_DDL_AUTO

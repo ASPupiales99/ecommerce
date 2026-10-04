@@ -72,6 +72,16 @@ spec:
                 secretKeyRef:
                   name: ecommerce-secrets
                   key: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MYSQL_APP_USERNAME
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ecommerce-secrets
+                  key: MYSQL_APP_PASSWORD
             - name: MYSQL_DATABASE
               value: "inventory-db"
           volumeMounts:

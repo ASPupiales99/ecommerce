@@ -46,7 +46,7 @@ spec:
                   name: ecommerce-secrets
                   key: MONGO_ROOT_PASSWORD
             - name: SPRING_MONGODB_AUTHENTICATION_DATABASE
-              value: "CHANGE_ME"
+              value: "admin"
 ---
 apiVersion: v1
 kind: Service
